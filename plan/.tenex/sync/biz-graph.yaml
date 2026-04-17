@@ -56,11 +56,11 @@ workpackages:
         updated_at: "2026-04-17T06:53:05.584Z"
     meta:
       created: "2024-01-01"
-      frozen: "2026-04-17T15:06:23.540Z"
+      frozen: "2026-04-17T15:21:57.099Z"
       lastSpecRun: "2026-04-17T06:53:05.584Z"
       modified: "2026-04-17"
       status: frozen
-      version: "2"
+      version: "3"
       workpackage: dental-booking
     stories:
       US-001:
