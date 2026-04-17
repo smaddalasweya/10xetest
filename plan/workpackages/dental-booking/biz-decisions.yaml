@@ -1,0 +1,52 @@
+questions:
+  decision-1776408919888-cwhs4m2j9:
+    applied: "2026-04-17T06:56:13.617Z"
+    category: scope
+    context: >-
+      No-show appointments reduce clinic efficiency and revenue. A policy is needed to address this issue while
+      balancing patient satisfaction.
+    created: "2026-04-17T06:55:19.888Z"
+    id: decision-1776408919888-cwhs4m2j9
+    options:
+      - "Option A: No penalty for no-shows"
+      - "Option B: Automated no-show fee"
+      - "Option C: Warning system with manual follow-up"
+    question: What happens if a patient books an appointment but does not show up?
+    recommended: "Option B: Automated no-show fee"
+    resolution: "Option B: Automated no-show fee"
+    resolved: "2026-04-17T06:55:35.678Z"
+    severity: high
+    status: resolved
+  decision-1776408919891-rknu61eqd:
+    applied: "2026-04-17T06:56:13.617Z"
+    category: scope
+    context: Setting booking and cancellation limits impacts clinic scheduling flexibility and patient satisfaction.
+    created: "2026-04-17T06:55:19.891Z"
+    id: decision-1776408919891-rknu61eqd
+    options:
+      - "Option A: No restrictions"
+      - "Option B: Set booking and cancellation windows"
+      - "Option C: Dynamic restrictions based on clinic load"
+    question: Are there any restrictions on how far in advance patients can book or cancel appointments?
+    recommended: "Option B: Set booking and cancellation windows"
+    resolution: "Option B: Set booking and cancellation windows"
+    resolved: "2026-04-17T06:55:37.190Z"
+    severity: medium
+    status: resolved
+  decision-1776408919892-f9sctw4ca:
+    applied: "2026-04-17T06:56:13.617Z"
+    category: scope
+    context: Multi-location support impacts scalability and future-proofing of the system.
+    created: "2026-04-17T06:55:19.892Z"
+    id: decision-1776408919892-f9sctw4ca
+    options:
+      - "Option A: Single clinic only"
+      - "Option B: Multi-clinic ready (recommended)"
+      - "Option C: Multi-clinic support from the start"
+    question: Should the system support multiple clinics or locations in the future?
+    recommended: "Option B: Multi-clinic ready"
+    resolution: "Option A: Single clinic only"
+    resolved: "2026-04-17T06:55:45.636Z"
+    severity: low
+    status: resolved
+workpackage: dental-booking

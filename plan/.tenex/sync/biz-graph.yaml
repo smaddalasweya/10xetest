@@ -1,0 +1,226 @@
+workpackages:
+  dental-booking:
+    _index:
+      by_persona:
+        Clinic Administrator:
+          - US-005
+        Patient:
+          - US-001
+          - US-002
+          - US-003
+          - US-004
+      by_priority:
+        high:
+          - US-001
+          - US-002
+          - US-003
+        low: []
+        medium:
+          - US-004
+          - US-005
+    context:
+      constraints:
+        - System must be accessible via web browsers on desktop and mobile devices.
+        - Appointment slots must update in real-time.
+        - Patient data must be securely stored and transmitted.
+        - System must handle up to 10,000 users concurrently.
+      goals:
+        - Enable patients to register online.
+        - Allow patients to view and book available appointment slots.
+        - Send email confirmations for booked appointments.
+      problem: Patients can only book appointments by calling during business hours, which is inconvenient for many.
+      scope:
+        in:
+          - Online patient registration.
+          - Viewing and booking appointment slots.
+          - Appointment cancellations and rescheduling.
+          - Email confirmations for bookings.
+        out:
+          - Payment processing.
+          - Insurance verification.
+    glossary:
+      TERM-001:
+        created_at: "2026-04-17T06:53:05.584Z"
+        definition: The system reflects changes to appointment slots immediately as they occur.
+        term: Real-time updates
+        updated_at: "2026-04-17T06:53:05.584Z"
+      TERM-002:
+        created_at: "2026-04-17T06:53:05.584Z"
+        definition: A web application that adjusts its layout and functionality to different screen sizes and devices.
+        term: Responsive web application
+        updated_at: "2026-04-17T06:53:05.584Z"
+      TERM-003:
+        created_at: "2026-04-17T06:53:05.584Z"
+        definition: Ensuring patient data is encrypted in transit and at rest, and access is restricted to authorized users.
+        term: Secure handling
+        updated_at: "2026-04-17T06:53:05.584Z"
+    meta:
+      created: "2024-01-01"
+      frozen: "2026-04-17T15:06:23.540Z"
+      lastSpecRun: "2026-04-17T06:53:05.584Z"
+      modified: "2026-04-17"
+      status: frozen
+      version: "2"
+      workpackage: dental-booking
+    stories:
+      US-001:
+        acceptance:
+          - >-
+            Given a patient visits the registration page, When they provide valid details, Then their account is
+            created.
+        acceptance_criteria:
+          items:
+            - >-
+              Given a registration form, When a patient enters valid details, Then the system creates their account and
+              sends a confirmation email.
+            - >-
+              Given invalid input, When the patient submits the form, Then the system displays appropriate error
+              messages.
+        benefit: So they can book appointments and manage their profile.
+        constraints:
+          - Registration must complete within 2 seconds under normal load.
+        created_at: "2026-04-17T06:53:05.584Z"
+        data_requirements:
+          - First name, Last name, Email, Password (hashed), Phone number.
+        edge_cases:
+          - Patient tries to register with an already used email.
+          - Patient enters special characters in their name.
+        error_scenarios:
+          - Database connection failure during registration.
+          - Email service unavailable.
+        need: To register an account online.
+        persona: Patient
+        priority: high
+        system_dependencies:
+          - Email service for confirmation emails.
+          - Database for storing patient information.
+        title: Patient Registration
+        updated_at: "2026-04-17T06:56:13.614Z"
+      US-002:
+        acceptance:
+          - >-
+            Given a logged-in patient, When they navigate to the appointment page, Then they see all available slots in
+            real-time.
+        acceptance_criteria:
+          items:
+            - >-
+              Given a logged-in patient, When they access the appointment page, Then the system displays available slots
+              for the next 30 days.
+            - >-
+              Given no slots are available, When the patient views the page, Then the system displays a 'No slots
+              available' message.
+        benefit: So they can choose a convenient time.
+        constraints:
+          - Slot availability must update in real-time.
+          - Patients can only book appointments up to 30 days in advance.
+        created_at: "2026-04-17T06:53:05.584Z"
+        data_requirements:
+          - Appointment date, time, dentist ID, availability status.
+        edge_cases:
+          - Patient views slots during a system update.
+          - Patient's timezone differs from the clinic's timezone.
+        error_scenarios:
+          - Database query failure for slot availability.
+        need: To see available appointment slots.
+        persona: Patient
+        priority: high
+        system_dependencies:
+          - Database for appointment slots.
+        title: View Appointment Slots
+        updated_at: "2026-04-17T06:56:13.614Z"
+      US-003:
+        acceptance:
+          - >-
+            Given an available slot, When a patient selects it and confirms, Then the system books the appointment and
+            sends a confirmation email.
+        acceptance_criteria:
+          items:
+            - >-
+              Given an available slot, When a patient books it, Then the system marks the slot as unavailable and sends
+              a confirmation email.
+            - >-
+              Given a double-booking attempt, When the patient submits, Then the system prevents the booking and
+              displays an error.
+        benefit: So they can secure a time for their dental visit.
+        constraints:
+          - Booking confirmation must complete within 2 seconds.
+          - Patients can only book appointments up to 30 days in advance.
+        created_at: "2026-04-17T06:53:05.584Z"
+        data_requirements:
+          - Patient ID, Appointment slot ID, Booking timestamp.
+        edge_cases:
+          - Patient books a slot that becomes unavailable due to a concurrent booking.
+        error_scenarios:
+          - Database update failure during booking.
+          - Email service unavailable.
+        need: To book an available appointment slot.
+        persona: Patient
+        priority: high
+        system_dependencies:
+          - Email service for confirmation emails.
+          - Database for updating slot availability.
+        title: Book Appointment
+        updated_at: "2026-04-17T06:56:13.614Z"
+      US-004:
+        acceptance:
+          - >-
+            Given a booked appointment, When a patient cancels it, Then the system marks the slot as available and sends
+            a cancellation email.
+          - >-
+            Given a booked appointment, When a patient reschedules it, Then the system updates the booking and sends a
+            rescheduling email.
+        acceptance_criteria:
+          items:
+            - >-
+              Given a booked appointment, When a patient cancels it, Then the system updates the slot status and sends a
+              cancellation email.
+            - >-
+              Given a booked appointment, When a patient reschedules it, Then the system updates the booking and sends a
+              rescheduling email.
+        benefit: So they can manage their bookings conveniently.
+        constraints:
+          - Cancellations and rescheduling must complete within 2 seconds.
+          - Patients can only cancel or reschedule appointments up to 24 hours before the appointment time.
+        created_at: "2026-04-17T06:53:05.584Z"
+        data_requirements:
+          - Patient ID, Appointment slot ID, Cancellation timestamp, Rescheduling details.
+        edge_cases:
+          - Patient cancels or reschedules close to the appointment time.
+        error_scenarios:
+          - Database update failure during cancellation or rescheduling.
+          - Email service unavailable.
+        need: To cancel or reschedule an existing appointment.
+        persona: Patient
+        priority: medium
+        system_dependencies:
+          - Email service for notifications.
+          - Database for updating slot and booking details.
+        title: Cancel or Reschedule Appointment
+        updated_at: "2026-04-17T06:56:13.614Z"
+      US-005:
+        acceptance:
+          - >-
+            Given a booked appointment, When the patient does not show up, Then the system applies an automated no-show
+            fee to their account.
+        acceptance_criteria:
+          items:
+            - >-
+              Given a booked appointment, When the patient does not check in within 15 minutes of the appointment time,
+              Then the system marks the appointment as a no-show and applies a fee.
+        benefit: So the clinic can manage missed appointments effectively.
+        constraints:
+          - No-show detection must occur within 15 minutes of the appointment time.
+        created_at: "2026-04-17T06:53:05.584Z"
+        data_requirements:
+          - Patient ID, Appointment slot ID, No-show timestamp, Fee details.
+        edge_cases:
+          - Patient arrives late but within the grace period.
+        error_scenarios:
+          - Database update failure when applying the no-show fee.
+        need: To handle missed appointments automatically.
+        persona: Clinic Administrator
+        priority: medium
+        system_dependencies:
+          - Database for tracking no-shows and fees.
+        title: Handle No-Show Appointments
+        updated_at: "2026-04-17T06:56:13.614Z"

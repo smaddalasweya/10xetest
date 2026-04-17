@@ -1,0 +1,4 @@
+{"timestamp":"2026-04-17T06:53:46.347Z","action":"spec","details":"Generated biz-graph from documents"}
+{"timestamp":"2026-04-17T06:55:19.892Z","action":"clarify-generate","details":"Business Analysis: Develop an online appointment booking system to improve patient convenience and reduce clinic administrative workload.. Expert Product Analysis: 3 decision options, 3 strategic recommendations, 3 priority decisions identified."}
+{"timestamp":"2026-04-17T06:56:13.619Z","action":"apply-decisions","details":"Applied 3 decisions to stories (structure preserved)"}
+{"timestamp":"2026-04-17T15:06:23.546Z","action":"freeze","details":"Frozen at version 2"}
